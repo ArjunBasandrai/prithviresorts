@@ -16,7 +16,7 @@ export default function Benefits() {
     const cardStyles = "px-4 md:py-4";
     return (
         <>
-            <div className="py-16 md:py-24 md:px-48 flex flex-col md:flex-row w-full md:gap-2">
+            <div className="py-16 md:pt-24 md:pb-20 md:px-48 flex flex-col md:flex-row w-full md:gap-2">
                 <div className={`w-full md:w-3/5 ${cardStyles} text-3xl font-bold pb-16 md:m-0`}>
                     <h2>Here's Why Our Guests Love Booking with Us</h2>
                 </div>
@@ -43,7 +43,7 @@ export default function Benefits() {
                     <div>
                         <p className="text-primary mb-3"><DiamondIcon /></p>
                         <h5 className="text-xl font-bold mb-4">Commitment to Quality and Safety</h5>
-                        <p className="text-lg text-black/60 mb-12">We prioritize high standards in cleanliness and safety, ensuring that every aspect of your event is handled with care and professionalism.</p>
+                        <p className="text-lg text-black/60">We prioritize high standards in cleanliness and safety, ensuring that every aspect of your event is handled with care and professionalism.</p>
                     </div>
                 </div>
             </div>

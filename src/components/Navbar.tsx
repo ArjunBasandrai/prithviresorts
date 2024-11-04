@@ -15,16 +15,16 @@ export default function Navbar() {
         <nav className="p-4">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="hidden md:flex space-x-16 lg:space-x-20 xl:space-x-28">
-                    <Link href="/" className="text-white hover:text-gray-300 font-medium text-md">
+                    <Link href="/" className="text-white hover:text-primary font-medium text-md transition-all duration-[300ms]">
                         Home
                     </Link>
-                    <Link href="/about" className="text-white hover:text-gray-300 font-medium text-md">
+                    <Link href="/about" className="text-white hover:text-primary font-medium text-md transition-all duration-[300ms]">
                         About
                     </Link>
-                    <Link href="/services" className="text-white hover:text-gray-300 font-medium text-md">
+                    <Link href="/services" className="text-white hover:text-primary font-medium text-md transition-all duration-[300ms]">
                         Services
                     </Link>
-                    <Link href="/contact" className="text-white hover:text-gray-300 font-medium text-md">
+                    <Link href="/contact" className="text-white hover:text-primary font-medium text-md transition-all duration-[300ms]">
                         Contact
                     </Link>
                 </div>

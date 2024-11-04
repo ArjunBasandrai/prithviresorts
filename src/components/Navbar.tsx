@@ -14,7 +14,7 @@ export default function Navbar() {
     return (
         <nav className="p-4">
             <div className="container mx-auto flex justify-between items-center">
-                <div className="hidden md:flex space-x-16 lg:space-x-20 xl:space-x-36">
+                <div className="hidden md:flex space-x-16 lg:space-x-20 xl:space-x-28">
                     <Link href="/" className="text-white hover:text-gray-300 font-medium text-md">
                         Home
                     </Link>

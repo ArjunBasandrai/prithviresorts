@@ -11,6 +11,16 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #dcbc7f;
+  }
+}
+
+@layer base {
+  @font-face {
+      font-family: 'Playfair';        
+      src: url('../fonts/PlayfairDisplay.ttf') format('truetype');
+      font-style: normal;
+      font-display: swap;
   }
 }
 

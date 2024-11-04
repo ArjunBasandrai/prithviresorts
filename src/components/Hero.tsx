@@ -84,7 +84,7 @@ export default function Hero() {
                     >
                         <span className="relative z-10 font-bold uppercase">
                             <p className="text-primary text-xs font-bold uppercase">Explore &nbsp;our &nbsp;services</p>
-                            <p className="text-lg">Prithvi Resorts and Hotels</p>
+                            <p className="text-md xl:text-lg">Prithvi Resorts and Hotels</p>
                         </span>
                         {activeSection !== "about" && (
                             <span className="absolute inset-0 bg-black/10 opacity-0 hover:opacity-100 transition-all duration-500"></span>
@@ -97,7 +97,7 @@ export default function Hero() {
                     >
                         <span className="relative z-10 font-bold uppercase">
                             <p className="text-primary text-xs font-bold uppercase">* &nbsp;* &nbsp;*</p>
-                            <p className="text-lg">Wedding Palace</p>
+                            <p className="text-md xl:text-lg">Wedding Palace</p>
                         </span>
                         {activeSection !== "wedding-palace" && (
                             <span className="absolute inset-0 bg-black/10 opacity-0 hover:opacity-100 transition-all duration-500"></span>
@@ -110,7 +110,7 @@ export default function Hero() {
                     >
                         <span className="relative z-10 font-bold uppercase">
                             <p className="text-primary text-xs font-bold uppercase">* &nbsp;* &nbsp;*</p>
-                            <p className="text-lg">Conference & Party Hall</p>
+                            <p className="text-md xl:text-lg">Conference & Party Hall</p>
                         </span>
                         {activeSection !== "conference-hall" && (
                             <span className="absolute inset-0 bg-black/10 opacity-0 hover:opacity-100 transition-all duration-500"></span>
@@ -123,7 +123,7 @@ export default function Hero() {
                     >
                         <span className="relative z-10 font-bold uppercase">
                             <p className="text-primary text-xs font-bold uppercase">* &nbsp;* &nbsp;*</p>
-                            <p className="text-lg">Hotel</p>
+                            <p className="text-md xl:text-lg">Hotel</p>
                         </span>
                         {activeSection !== "hotel" && (
                             <span className="absolute inset-0 bg-black/10 opacity-0 hover:opacity-100 transition-all duration-500"></span>

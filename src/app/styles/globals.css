@@ -8,14 +8,6 @@
   --primary: #dcbc7f; 
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --primary: #dcbc7f;
-  }
-}
-
 @layer base {
   @font-face {
     font-family: 'Playfair';        

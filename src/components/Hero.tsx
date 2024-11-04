@@ -60,8 +60,8 @@ export default function Hero() {
                         <Header />
                         {prevSection && (
                             <div className="absolute transition-all duration-[600ms] transform opacity-0 translate-y-8">
-                                <p className="text-xl md:text-lg text-primary font-bold mb-5">{sectionContent[prevSection].title}</p>
-                                <p className="text-3xl md:text-5xl font-bold mt-2 max-w-3xl">{sectionContent[prevSection].description}</p>
+                                <h2 className="text-xl md:text-lg text-primary font-bold mb-5">{sectionContent[prevSection].title}</h2>
+                                <h1 className="text-3xl md:text-5xl font-bold mt-2 max-w-3xl">{sectionContent[prevSection].description}</h1>
                             </div>
                         )}
 
@@ -70,8 +70,8 @@ export default function Hero() {
                             className={`transition-all duration-[600ms] transform ${prevSection ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
                                 }`}
                         >
-                            <p className="text-xl md:text-lg text-primary font-bold mb-5">{sectionContent[activeSection].title}</p>
-                            <p className="text-3xl md:text-5xl font-bold mt-2 max-w-3xl">{sectionContent[activeSection].description}</p>
+                            <h2 className="text-xl md:text-lg text-primary font-bold mb-5">{sectionContent[activeSection].title}</h2>
+                            <h1 className="text-3xl md:text-5xl font-bold mt-2 max-w-3xl">{sectionContent[activeSection].description}</h1>
                         </div>
                     </div>
                 </div>

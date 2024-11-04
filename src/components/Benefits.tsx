@@ -18,7 +18,7 @@ export default function Benefits() {
         <>
             <div className="py-16 md:pt-24 md:pb-20 md:px-48 flex flex-col md:flex-row w-full md:gap-2">
                 <div className={`w-full md:w-3/5 ${cardStyles} text-3xl font-bold pb-16 md:m-0`}>
-                    <h2>Here's Why Our Guests Love Booking with Us</h2>
+                    <h2>Here&apos;s Why Our Guests Love Booking with Us</h2>
                 </div>
                 <div className={`w-full ${cardStyles}`}>
                     <div>

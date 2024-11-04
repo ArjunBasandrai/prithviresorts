@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #dcbc7f; 
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,10 +18,10 @@
 
 @layer base {
   @font-face {
-      font-family: 'Playfair';        
-      src: url('../fonts/PlayfairDisplay.ttf') format('truetype');
-      font-style: normal;
-      font-display: swap;
+    font-family: 'Playfair';        
+    src: url('../fonts/PlayfairDisplay.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
   }
 }
 

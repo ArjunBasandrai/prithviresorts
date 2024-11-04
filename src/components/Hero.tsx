@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import "../app/styles/globals.css";
+import Header from "./Header";
 
 type Section = "about" | "wedding-palace" | "conference-hall" | "hotel";
 
@@ -53,6 +54,7 @@ export default function Hero() {
 
             <div className="absolute top-0 w-full bottom-24 z-2">
                 <div className="absolute bg-black/50 w-full h-full flex flex-col items-center justify-center text-white px-4 text-center">
+                    <Header />
                     {prevSection && (
                         <div className="absolute transition-all duration-[300ms] transform opacity-0 translate-y-8">
                             <p className="text-lg text-primary font-bold mb-5">{sectionContent[prevSection].title}</p>

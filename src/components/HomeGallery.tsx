@@ -10,7 +10,7 @@ export default function Gallery() {
   const [scrollY, setScrollY] = useState(0);
 
   const progress = useMotionValue(0);
-  const imageWidth = useTransform(progress, [0, 1], ['100%', '50%']);
+  const imageWidth = useTransform(progress, [0, 1], ['100%', '66.66666667%']);
   const headingOpacity = useTransform(progress, [0.2, 1], [0, 1]);
   const headingX = useTransform(progress, [0.2, 1], ['100%', '0%']);
   const headingFontSize = useTransform(progress, [0.2, 1], ['1.25rem', '5rem']);
@@ -50,10 +50,10 @@ export default function Gallery() {
   return (
     <>
       <div>
-        <div ref={galleryRef} className='sticky top-0 overflow-hidden min-h-screen'>
-          <div className='flex items-center h-screen'>
+        <div ref={galleryRef} className="sticky top-0 overflow-hidden min-h-screen">
+          <div className="flex items-center h-screen">
             <motion.div
-              className='h-screen relative flex-shrink-0'
+              className="h-screen relative flex-shrink-0"
               style={{
                 width: imageWidth,
                 scale: imageScale,
@@ -70,14 +70,14 @@ export default function Gallery() {
             </motion.div>
 
             <motion.div
-              className='flex flex-grow py-48 justify-center h-screen'
+              className="flex flex-grow py-48 justify-center h-screen"
               style={{
                 opacity: headingOpacity,
                 x: headingX,
               }}
             >
               <motion.h1
-                className='m-0'
+                className="m-0"
                 style={{ fontSize: headingFontSize }}
               >
                 Gallery
@@ -85,59 +85,29 @@ export default function Gallery() {
             </motion.div>
           </div>
         </div>
+
+        {/* Main Gallery Content */}
         <div className="w-full h-screen"></div>
-        <div className="sticky top-0 flex w-full h-screen">
-          <div className="flex-1 h-full relative">
-            <Image
-              src="/stage.jpg"
-              alt="Gallery Image"
-              fill
-              className="object-cover w-full h-full rounded-[24px] scale-95"
-            />
+        {[
+          { src: '/stage.jpg', caption: 'Wedding Ceremonies', offset: '9rem' },
+          { src: '/hall.jpg', caption: 'Kitty Parties', offset: '12rem' },
+          { src: '/decor.jpg', caption: 'Venue Decor Themes', offset: '15rem' },
+          { src: '/garden.jpg', caption: 'Outdoor Spaces and Gardens', offset: '18rem' },
+        ].map((item, index) => (
+          <div key={index} className="sticky top-0 flex w-full h-screen">
+            <div className="basis-2/3 h-full relative">
+              <Image
+                src={item.src}
+                alt="Gallery Image"
+                fill
+                className="object-cover w-full h-full rounded-[24px] scale-95"
+              />
+            </div>
+            <div className="basis-1/3 flex justify-center h-screen py-48">
+              <p className={`mt-[${item.offset}]`}>{item.caption}</p>
+            </div>
           </div>
-          <div className="flex-1 flex justify-center h-screen py-48">
-              <p className="mt-[9rem]">Wedding Ceremonies</p>
-          </div>
-        </div>
-        <div className="sticky top-0 flex w-full h-screen">
-          <div className="flex-1 h-full relative">
-            <Image
-              src="/hall.jpg"
-              alt="Gallery Image"
-              fill
-              className="object-cover w-full h-full rounded-[24px] scale-95"
-            />
-          </div>
-          <div className="flex-1 flex justify-center h-screen py-48">
-              <p className="mt-[12rem]">Kitty Parties</p>
-          </div>
-        </div>
-        <div className="sticky top-0 flex w-full h-screen">
-          <div className="flex-1 h-full relative">
-            <Image
-              src="/decor.jpg"
-              alt="Gallery Image"
-              fill
-              className="object-cover w-full h-full rounded-[24px] scale-95"
-            />
-          </div>
-          <div className="flex-1 flex justify-center h-screen py-48">
-              <p className="mt-[15rem]">Venue Decor Themes</p>
-          </div>
-        </div>
-        <div className="sticky top-0 flex w-full h-screen">
-          <div className="flex-1 h-full relative">
-            <Image
-              src="/garden.jpg"
-              alt="Gallery Image"
-              fill
-              className="object-cover w-full h-full rounded-[24px] scale-95"
-            />
-          </div>
-          <div className="flex-1 flex justify-center h-screen py-48">
-              <p className="mt-[18rem]">Outdoor Spaces and Gardens</p>
-          </div>
-        </div>
+        ))}
       </div>
     </>
   );

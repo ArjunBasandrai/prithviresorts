@@ -8,7 +8,7 @@ export default function Header() {
         <>
             <header className="absolute px-6 lg:px-12 xl:px-20 py-6 w-full z-10 top-0 flex items-center justify-between">
                 <Link href="/">
-                    <Image src="/logo.jpg" alt="Logo" width={150} height={100} />
+                    <Image src="/logo.jpg" alt="Logo" width={150} height={150} />
                 </Link>
                 <Navbar />
             </header>

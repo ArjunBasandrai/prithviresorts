@@ -76,7 +76,7 @@ export default function Hero() {
                     </div>
                 </div>
 
-                <div className="hidden md:flex absolute bottom-0 w-full h-24 z-2">
+                <div className="hidden md:flex absolute bottom-0 w-full h-24 z-[2]">
                     <button
                         onClick={() => handleSectionChange("about")}
                         className={`relative flex-1 ${activeSection === "about" ? "bg-black/70 text-white border-b-primary" : "bg-white text-black border-b-black/20"

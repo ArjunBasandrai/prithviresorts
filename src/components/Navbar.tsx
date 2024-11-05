@@ -14,7 +14,7 @@ export default function Navbar() {
     return (
         <nav className="p-4">
             <div className="container mx-auto flex justify-between items-center">
-                <div className="hidden md:flex space-x-16 lg:space-x-20 xl:space-x-28">
+                <div className="hidden space-x-16 lg:space-x-20 xl:space-x-28">
                     <Link href="/" className="text-white hover:text-primary font-medium text-md transition-all duration-[300ms]">
                         Home
                     </Link>
@@ -29,7 +29,7 @@ export default function Navbar() {
                     </Link>
                 </div>
 
-                <button onClick={toggleMobileMenu} className="md:hidden text-white focus:outline-none">
+                <button onClick={toggleMobileMenu} className="text-white focus:outline-none">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -37,16 +37,16 @@ export default function Navbar() {
             </div>
 
             <div
-                className={`fixed inset-0 bg-white/95 text-black transform z-50 transition-all duration-[400ms] ease-out
-                    ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                className={`fixed inset-0 bg-white text-black transform z-[99999] transition-all duration-[200ms] ease-out
+                    ${isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
             >
-                <button onClick={toggleMobileMenu} className={`absolute top-0 right-6 my-8 p-2 focus:outline-none bg-gray-200/60 rounded-md transition-all duration-1200 ${isMobileMenuOpen ? "block" : "hidden"}`}>
+                <button onClick={toggleMobileMenu} className={`absolute top-6 right-10 lg:right-20 xl:right-24 mx-1 my-8 focus:outline-none transition-all duration-1200 ${isMobileMenuOpen ? "block" : "hidden"}`}>
                     <svg className="w-6 h-6 text-black/60" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
-                
-                <div className="h-full w-full flex flex-col justify-center items-center font-medium text-lg text-black">
+
+                <div className="h-full w-full flex flex-col justify-center items-center font-medium text-5xl sm:text-6xl text-black">
                     <Link href="/" onClick={toggleMobileMenu} className="hover:text-primary transition-all duration-300 mb-12">
                         Home
                     </Link>

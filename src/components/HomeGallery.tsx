@@ -7,7 +7,6 @@ import Image from 'next/image';
 export default function Gallery() {
   const galleryRef = useRef<HTMLDivElement | null>(null);
   const [galleryTop, setGalleryTop] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
 
   const progress = useMotionValue(0);
   const imageWidth = useTransform(progress, [0, 1], ['100%', '66.66666667%']);
@@ -28,7 +27,6 @@ export default function Gallery() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
 
       if (galleryTop > 0) {
         const startAnimation = galleryTop;

@@ -1,4 +1,10 @@
+"use client";
+
+import { useRef, useEffect } from "react";
 import "../app/styles/globals.css";
+
+import { useDispatch } from 'react-redux';
+import { setGalleryTop } from '@/store/store';
 
 function DiamondIcon() {
     return (
@@ -14,9 +20,22 @@ function DiamondIcon() {
 
 export default function Benefits() {
     const cardStyles = "px-4 md:py-4";
+
+    const dispatch = useDispatch();
+    const benefitsRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        if (benefitsRef.current) {
+            const bottom = benefitsRef.current.getBoundingClientRect().bottom + window.scrollY;
+            dispatch(setGalleryTop(bottom));
+            console.log(bottom);
+        }
+    }
+    , []);
+
     return (
         <>
-            <div className="py-16 md:pt-24 md:pb-20 md:px-48 flex flex-col md:flex-row w-full md:gap-2">
+            <div ref={benefitsRef} className="py-16 md:pt-24 md:pb-20 md:px-48 flex flex-col md:flex-row w-full md:gap-2">
                 <div className={`w-full md:w-3/5 ${cardStyles} text-3xl font-bold pb-16 md:m-0`}>
                     <h2>Here&apos;s Why Our Guests Love Booking with Us</h2>
                 </div>

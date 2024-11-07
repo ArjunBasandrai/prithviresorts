@@ -1,14 +1,18 @@
 "use client";
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
+
 export default function Gallery() {
   const galleryRef = useRef<HTMLDivElement | null>(null);
-  const [galleryTop, setGalleryTop] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  const galleryTop = useSelector((state: RootState) => state.galleryTop.galleryTop);
 
   const [isSticky, setIsSticky] = useState([false, false, false, false, false]);
 
@@ -17,8 +21,6 @@ export default function Gallery() {
   const headingOpacity = useTransform(progress, [0.2, 1], [0, 1]);
   const headingX = useTransform(progress, [0, 1], ['50%', '0%']);
   const headingFontSize = useTransform(progress, [0.2, 1], ['1.25rem', '5rem']);
-  const imageScale = useTransform(progress, [0, 1], [1, 0.95]);
-  const imageBorderRadius = useTransform(progress, [0, 1], ['0px', '24px']);
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,18 +34,11 @@ export default function Gallery() {
   }, []);
 
   useEffect(() => {
-    if (galleryRef.current) {
-      const rect = galleryRef.current.getBoundingClientRect();
-      const top = rect.top + window.scrollY;
-      setGalleryTop(top);
-    }
-  }, []);
-
-  useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (galleryTop > 0) {
+        console.log(galleryTop, currentScrollY, galleryRef.current ? galleryRef.current.getBoundingClientRect().top : -1);
         const startAnimation = galleryTop;
         const endAnimation = galleryTop + 500;
         const newProgress = Math.min(
@@ -82,16 +77,14 @@ export default function Gallery() {
               className={`h-screen relative flex-shrink-0 top-0 ${isSticky[0] ? 'bg-opacity-20' : ''}`}
               style={{
                 width: isMobile ? "100%" : imageWidth,
-                scale: isMobile ? "98%" : imageScale,
-                borderRadius: isMobile ? '0' : imageBorderRadius,
                 overflow: 'hidden',
               }}
             >
               <Image
                 src="/prithvi.jpg"
                 alt="Gallery Image"
-                layout="fill"
-                objectFit="cover"
+                fill
+                className='object-cover'
               />
               <div className={`md:hidden h-full w-full bg-black absolute z-[10] transition-all duration-[500ms] ${isSticky[0] ? "opacity-[60%]" : "opacity-[0%]"}`}></div>
             </motion.div>
@@ -132,7 +125,7 @@ export default function Gallery() {
                 src={item.src}
                 alt="Gallery Image"
                 fill
-                className="object-cover w-full h-full md:rounded-[24px] scale-[98%] md:scale-95"
+                className="object-cover w-full h-full"
               />
               <div className={`md:hidden h-full w-full bg-black ${isSticky[index + 1] && isMobile ? "opacity-[60%]" : "opacity-[0%]"} transition-all duration-[500ms] absolute z-[10] scale-[98%]`}></div>
             </div>

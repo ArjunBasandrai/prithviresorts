@@ -28,7 +28,6 @@ export default function Benefits() {
         if (benefitsRef.current) {
             const bottom = benefitsRef.current.getBoundingClientRect().bottom + window.scrollY;
             dispatch(setGalleryTop(bottom));
-            console.log(bottom);
         }
     }, []);
 

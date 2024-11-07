@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,7 +22,7 @@ export default function Gallery() {
   const headingX = useTransform(progress, [0, 1], ['50%', '0%']);
   const headingFontSize = useTransform(progress, [0.2, 1], ['1.25rem', '5rem']);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -38,7 +38,6 @@ export default function Gallery() {
       const currentScrollY = window.scrollY;
 
       if (galleryTop > 0) {
-        console.log(galleryTop, currentScrollY, galleryRef.current ? galleryRef.current.getBoundingClientRect().top : -1);
         const startAnimation = galleryTop;
         const endAnimation = galleryTop + 500;
         const newProgress = Math.min(
@@ -86,7 +85,7 @@ export default function Gallery() {
                 fill
                 className='object-cover'
               />
-              <div className={`md:hidden h-full w-full bg-black absolute z-[10] transition-all duration-[500ms] ${isSticky[0] ? "opacity-[60%]" : "opacity-[0%]"}`}></div>
+              <div className="md:hidden h-full w-full bg-gradient-to-t from-black/95 via-black/70 to-black/0 absolute z-[10] transition-all duration-[500ms] opacity-[60%]"></div>
             </motion.div>
 
             <motion.div
@@ -97,8 +96,8 @@ export default function Gallery() {
               }}
             >
               <motion.h1
-                className={`m-0 text-white md:text-black transition-all duration-[500ms] ${isSticky[0] ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"}`}
-                style={{ fontSize: isMobile ? "5rem" : headingFontSize }}
+                className={`m-0 text-white md:text-black transition-all duration-[500ms] z-[10]`}
+                style={{ fontSize: isMobile ? "5.5rem" : headingFontSize }}
               >
                 <Link href="/gallery">
                   Gallery
@@ -127,12 +126,14 @@ export default function Gallery() {
                 fill
                 className="object-cover w-full h-full"
               />
-              <div className={`md:hidden h-full w-full bg-black ${isSticky[index + 1] && isMobile ? "opacity-[60%]" : "opacity-[0%]"} transition-all duration-[500ms] absolute z-[10] scale-[98%]`}></div>
+              <div className="md:hidden h-full w-full bg-gradient-to-t from-black/95 via-black/70 to-black/0 transition-all duration-[500ms] absolute z-[10] md:scale-[98%]"></div>
             </div>
             <div className="absolute md:static w-full basis-1/3 flex flex-col md:flex-row justify-center text-center h-screen py-48">
               <Link href="/about" style={{
                 paddingTop: isMobile ? "0" : item.offset,
-              }} className={`text-white md:text-black text-[3rem] md:text-[1rem] z-[10] transition-all duration-[500ms] ${isMobile && (isSticky[index + 1] ? "translate-y-0 opacity-100" : "translate-y-full opacity-0")}`}>{item.caption}</Link>
+              }} className={`md:w-[250px] md:text-right text-white md:text-black text-[4rem] md:text-[1rem] z-[10] transition-all duration-[500ms] p-4 md:p-0`}>
+                {item.caption}
+              </Link>
             </div>
           </div>
         ))}

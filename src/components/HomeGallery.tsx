@@ -131,12 +131,13 @@ export default function Gallery() {
             <div className="absolute md:static w-full basis-1/3 flex flex-col md:flex-row justify-center text-center h-screen py-48">
               <Link href="/about" style={{
                 paddingTop: isMobile ? "0" : item.offset,
-              }} className={`md:w-[250px] md:text-right text-white md:text-black text-[4rem] md:text-[1rem] z-[10] transition-all duration-[500ms] p-4 md:p-0 ${isSticky[index+1] && !isMobile && "underline"} decoration-primary decoration-[2px] underline-offset-2`}>
+              }} className={`md:w-[250px] md:text-right text-white md:text-black text-[4rem] md:text-[1.5rem] z-[10] transition-all duration-[500ms] p-4 md:p-0 ${isSticky[index + 1] && !isMobile && "underline"} decoration-primary decoration-[2px] underline-offset-2`}>
                 {item.caption}
               </Link>
             </div>
           </div>
         ))}
+      <div className="h-8 hidden md:block"></div>
       </div>
     </>
   );

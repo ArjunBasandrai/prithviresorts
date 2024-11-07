@@ -33,7 +33,7 @@ export default function Testimonials() {
     return (
         <>
             <div className="w-full bg-primary px-4 pt-16 pb-20 md:py-32 flex flex-col items-center text-black relative">
-                <h1 className="text-2xl md:text-3xl uppercase mb-6 md:mb-12 text-center">What clients are saying</h1>
+                <h1 className="text-2xl md:text-3xl uppercase mb-6 md:mb-12 text-center">What our guests are saying</h1>
                 <div
                     ref={containerRef}
                     className="w-full flex flex-col items-center justify-center transition-all duration-300 overflow-hidden"

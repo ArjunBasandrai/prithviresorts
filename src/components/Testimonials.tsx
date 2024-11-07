@@ -32,24 +32,24 @@ export default function Testimonials() {
 
     return (
         <>
-            <div className="w-full bg-primary px-4 py-32 flex flex-col items-center text-black relative">
-                <h1 className="text-3xl uppercase mb-12">What clients are saying</h1>
+            <div className="w-full bg-primary px-4 pt-16 pb-20 md:py-32 flex flex-col items-center text-black relative">
+                <h1 className="text-2xl md:text-3xl uppercase mb-6 md:mb-12 text-center">What clients are saying</h1>
                 <div
                     ref={containerRef}
                     className="w-full flex flex-col items-center justify-center transition-all duration-300 overflow-hidden"
                 >
-                    <div className={`relative w-full flex flex-col items-center py-1 text-center transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}>
+                    <div className={`relative w-full flex flex-col items-center md:py-1 text-center transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}>
                         <blockquote
                             ref={blockquoteRef}
-                            className="max-w-[700px] text-2xl text-white"
+                            className="max-w-[700px] text-lg md:text-2xl text-white"
                         >
                             {testimonials[currentTestimonial][0]}
                         </blockquote>
-                        <p className="max-w-[700px] text-lg mt-5 text-white">
+                        <p className="max-w-[700px] text-md md:text-lg mt-5 text-white">
                             - {testimonials[currentTestimonial][1]}
                         </p>
                     </div>
-                    <div className="flex absolute bottom-[5rem] gap-2">
+                    <div className="flex absolute bottom-[2rem] md:bottom-[4rem] gap-2">
                     {testimonials.map((_, index) => (
                         <div
                         key={index}

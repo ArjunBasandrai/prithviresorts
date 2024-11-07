@@ -30,8 +30,7 @@ export default function Benefits() {
             dispatch(setGalleryTop(bottom));
             console.log(bottom);
         }
-    }
-    , []);
+    }, []);
 
     return (
         <>

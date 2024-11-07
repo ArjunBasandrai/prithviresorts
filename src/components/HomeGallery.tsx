@@ -51,7 +51,7 @@ export default function Gallery() {
         const div = document.getElementById(`gallery-item-${index}`);
         if (div) {
           const rect = div.getBoundingClientRect();
-          return rect.top === 0;
+          return rect.top <= 0;
         }
         return false;
       });
@@ -131,7 +131,7 @@ export default function Gallery() {
             <div className="absolute md:static w-full basis-1/3 flex flex-col md:flex-row justify-center text-center h-screen py-48">
               <Link href="/about" style={{
                 paddingTop: isMobile ? "0" : item.offset,
-              }} className={`md:w-[250px] md:text-right text-white md:text-black text-[4rem] md:text-[1rem] z-[10] transition-all duration-[500ms] p-4 md:p-0`}>
+              }} className={`md:w-[250px] md:text-right text-white md:text-black text-[4rem] md:text-[1rem] z-[10] transition-all duration-[500ms] p-4 md:p-0 ${isSticky[index+1] && !isMobile && "underline"} decoration-primary decoration-[2px] underline-offset-2`}>
                 {item.caption}
               </Link>
             </div>

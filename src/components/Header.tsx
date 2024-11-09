@@ -1,9 +1,12 @@
+"use client";
+
 import "../app/styles/globals.css";
 import Image from "next/image";
 import Navbar from "./Navbar";
 import Link from "next/link";
 
 export default function Header() {
+
     return (
         <>
             <header className="absolute px-6 lg:px-12 xl:px-20 py-6 w-full z-10 top-0 flex items-center justify-between">

@@ -21,6 +21,8 @@ export default function Gallery() {
   const headingOpacity = useTransform(progress, [0.2, 1], [0, 1]);
   const headingX = useTransform(progress, [0, 1], ['50%', '0%']);
   const headingFontSize = useTransform(progress, [0.2, 1], ['1.25rem', '5rem']);
+  const imageScale = useTransform(progress, [0, 1], [1, 0.95]);
+  const imageBorderRadius = useTransform(progress, [0, 1], ['0px', '24px']);
 
   useLayoutEffect(() => {
     const handleResize = () => {
@@ -76,6 +78,8 @@ export default function Gallery() {
               className={`h-screen relative flex-shrink-0 top-0 ${isSticky[0] ? 'bg-opacity-20' : ''}`}
               style={{
                 width: isMobile ? "100%" : imageWidth,
+                scale: isMobile ? "98%" : imageScale,
+                borderRadius: isMobile ? '0' : imageBorderRadius,
                 overflow: 'hidden',
               }}
             >
@@ -119,12 +123,12 @@ export default function Gallery() {
             id={`gallery-item-${index + 1}`}
             className="sticky top-0 flex w-full h-screen"
           >
-            <div className="w-full md:basis-2/3 h-full relative">
+            <div className="w-full md:basis-2/3 h-full relative scale-[95%]">
               <Image
                 src={item.src}
                 alt="Gallery Image"
                 fill
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full rounded-[24px]"
               />
               <div className="md:hidden h-full w-full bg-gradient-to-t from-black/95 via-black/70 to-black/0 transition-all duration-[500ms] absolute z-[10] md:scale-[98%]"></div>
             </div>

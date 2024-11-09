@@ -57,7 +57,6 @@ export default function Hero() {
 
                 <div className="absolute top-0 w-full bottom-24 z-2">
                     <div className="absolute md:bg-black/70 w-full h-full flex flex-col items-center justify-center text-white px-4 text-center">
-                        <Header />
                         {prevSection && (
                             <div className="absolute transition-all duration-[600ms] transform opacity-0 translate-y-8">
                                 <h2 className="text-xl md:text-lg text-primary font-bold mb-5">{sectionContent[prevSection].title}</h2>

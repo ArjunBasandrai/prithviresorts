@@ -5,7 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #dcbc7f; 
+  --primary: rgba(220, 188, 127, 1); 
 }
 
 @layer base {

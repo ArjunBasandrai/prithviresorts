@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import "../app/styles/globals.css";
-import Header from "./Header";
 
 type Section = "about" | "wedding-palace" | "conference-hall" | "hotel";
 

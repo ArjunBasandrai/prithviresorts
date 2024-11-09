@@ -19,49 +19,46 @@ function DiamondIcon() {
 const Footer: React.FC = () => {
     return (
         <footer>
-            <div className="relative w-full h-screen">
-                <div className="absolute w-full h-[80vh]">
+            <div className="relative w-full h-[160vh] md:h-screen">
+                <div className="absolute w-full h-[80vh] md:h-[80vh]">
                     <Image
                         src="/outdoor_decor.jpg"
                         alt="Outdoor decor"
-                        layout="fill"
-                        objectFit="cover"
-                        priority
-                        className="z-0"
+                        fill
+                        className="z-0 w-full object-cover"
                     />
                     <div className="absolute w-full top-0 bg-black/75 z-10 h-[80vh] flex flex-col items-center justify-center text-white">
-                        <h2 className="text-5xl uppercase font-bold mb-6">Ready to Make Memories?</h2>
-                        <h4 className="text-lg mb-8">Reach out to us anytime by phone or email</h4>
-                        <div className="flex space-x-16 font-bold">
-                            <Link href="mailto:prithviresorts@gmail.com" className="bg-primary px-12 py-4 rounded transition-all duration-300 hover:bg-amber-200/80">
+                        <h2 className="text-2xl md:text-5xl uppercase font-bold md:mb-6">Ready to Make Memories?</h2>
+                        <h4 className="text-md md:text-lg mb-10 md:mb-8">Reach out to us anytime by phone or email</h4>
+                        <div className="flex flex-col md:flex-row md:space-x-16 font-bold">
+                            <Link href="mailto:prithviresorts@gmail.com" className="bg-primary px-8 md:px-12 py-2 md:py-4 rounded transition-all duration-300 hover:bg-amber-200/80">
                                 Contact us
                             </Link>
-                            <div className="flex space-x-4 font-bold text-lg text-white cursor-pointer">
-                                <p className="flex items-center hover:text-primary transition-all duration-300">+91 98140 42455</p>
-                                <p className="flex items-center hover:text-primary transition-all duration-300">+91 98143 13055</p>
+                            <div className="flex flex-col md:flex-row md:space-x-4 font-bold text-lg text-white cursor-pointer mt-2 md:mt-0">
+                                <p className="flex items-center justify-center hover:text-primary transition-all duration-300">+91 98140 42455</p>
+                                <p className="flex items-center justify-center hover:text-primary transition-all duration-300">+91 98143 13055</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="absolute w-full bottom-0 bg-gradient-to-t from-black via-black to-transparent h-[40vh] z-10 text-white">
-                    <div className="container max-w-4xl bg-gray-500/0 mx-auto pt-8 flex gap-8 justify-between w-full mt-4">
+                <div className="absolute w-full bottom-0 md:bg-gradient-to-t md:from-black md:via-black md:to-transparent z-10 text-white mt-4">
+                    <div className="md:hidden w-full bg-gradient-to-t from-black via-black to-transparent h-32 z-[1000]"></div>
+                    <div className="container max-w-4xl bg-black md:bg-transparent mx-auto px-4 md:px-0 md:pt-8 flex gap-8 justify-between md:justify-around h-auto md:h-[40vh] w-full flex-col md:flex-row">
                         <div className="">
                             <DiamondIcon />
-                            <h6 className="font-bold text-xl mt-2">Here's where to find us</h6>
-                            <div className="mt-5 mb-12 text-gray-300">
+                            <h6 className="font-bold text-xl mt-2">Here&apos;s where to find us</h6>
+                            <div className="mt-5 mb-4 md:mb-12 text-gray-300">
                                 <p>Grand Trunk Road, Village Bhattian</p>
                                 <p>Phillaur, Dist. Jalandhar</p>
                                 <p>Punjab, India</p>
                             </div>
 
-                            {/* <DiamondIcon /> */}
-                            {/* <h6 className="font-bold text-xl mt-2">Follow us on Social Media</h6> */}
-                            <div className="flex space-x-2 mt-4">
-                                <Link href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                            <div className="flex space-x-2 md:mt-4">
+                                <Link href="https://www.instagram.com/prithviresortsphillaur/" target="_blank" rel="noopener noreferrer">
                                     <FaInstagram className="text-gray-400 hover:text-pink-500 transition-all duration-300" size={24} />
                                 </Link>
-                                <Link href="https://www.facebook.com/yourpage" target="_blank" rel="noopener noreferrer">
+                                <Link href="https://www.facebook.com/Prithvi.Resorts" target="_blank" rel="noopener noreferrer">
                                     <FaFacebookF className="text-gray-400 hover:text-blue-500 transition-all duration-300" size={24} />
                                 </Link>
                             </div>
@@ -71,7 +68,7 @@ const Footer: React.FC = () => {
                             <h6 className="font-bold text-xl mt-2">Find us on the map</h6>
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3092.606938819987!2d75.78140301060664!3d31.069632469167054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a8918a6a3b3cf%3A0xdd024175ba9e9475!2sPrithvi%20Resorts!5e1!3m2!1sen!2sin!4v1731154860138!5m2!1sen!2sin"
-                                width="350"
+                                width="100%"
                                 height="150"
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
@@ -79,21 +76,38 @@ const Footer: React.FC = () => {
                             ></iframe>
                         </div>
                         <div className="">
-                            <DiamondIcon />
-                            <h6 className="font-bold text-xl mt-2">Navigation</h6>
-                            <p className="text-gray-400 hover:text-primary transition-all duration-300 mt-4">
-                                <Link href="/">Home</Link>
-                            </p>
-                            <p className="text-gray-400 hover:text-primary transition-all duration-300 mt-4">
-                                <Link href="/about">About</Link>
-                            </p>
-                            <p className="text-gray-400 hover:text-primary transition-all duration-300 mt-4">
-                                <Link href="/services">Services</Link>
-                            </p>
-                            <p className="text-gray-400 hover:text-primary transition-all duration-300 mt-4">
-                                <Link href="/gallery">Gallery</Link>
-                            </p>
+                            <div className="hidden md:block">
+                                <DiamondIcon />
+                                <h6 className="font-bold text-xl mt-2">Navigation</h6>
+                            </div>
+                            <div className="flex flex-row md:flex-col w-full justify-between gap-4 mt-2 md:mt-4">
+                                <p className="text-gray-400 hover:text-primary transition-all duration-300">
+                                    <Link href="/">Home</Link>
+                                </p>
+                                <p className="text-gray-400 hover:text-primary transition-all duration-300">
+                                    <Link href="/about">About</Link>
+                                </p>
+                                <p className="text-gray-400 hover:text-primary transition-all duration-300">
+                                    <Link href="/services">Services</Link>
+                                </p>
+                                <p className="text-gray-400 hover:text-primary transition-all duration-300">
+                                    <Link href="/gallery">Gallery</Link>
+                                </p>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+            </div>
+            <div className="bg-black text-white pt-8 md:pt-0">
+                <div className="bg-gray-100/10 h-[0.3px] w-full"></div>
+                <div className="flex py-8 justify-center items-center text-gray-600 flex-col md:flex-row">
+                    <div>
+                        Prithvi Resorts & Hotels © {new Date().getFullYear()}
+                    </div>
+                    <div className="px-2 hidden md:block">|</div>
+                    <div className="text-gray-500/70 md:text-gray-600">
+                        Developed by <a href="https://arjunbasandrai.dev/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-all duration-300 text-gray-500">Arjun Basandrai</a>
                     </div>
                 </div>
             </div>

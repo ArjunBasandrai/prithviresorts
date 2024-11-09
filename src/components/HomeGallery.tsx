@@ -79,7 +79,7 @@ export default function Gallery() {
               style={{
                 width: isMobile ? "100%" : imageWidth,
                 scale: isMobile ? "98%" : imageScale,
-                borderRadius: isMobile ? '0' : imageBorderRadius,
+                borderRadius: isMobile ? '24px' : imageBorderRadius,
                 overflow: 'hidden',
               }}
             >

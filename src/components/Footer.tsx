@@ -18,8 +18,8 @@ function DiamondIcon() {
 
 const Footer: React.FC = () => {
     return (
-        <footer>
-            <div className="relative w-full h-[160vh] md:h-screen">
+        <footer className="bg-black">
+            <div className="relative w-full h-[140vh] md:h-screen">
                 <div className="absolute w-full h-[80vh] md:h-[80vh]">
                     <Image
                         src="/outdoor_decor.jpg"

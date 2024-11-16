@@ -94,8 +94,8 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="bg-black pt-8 md:pt-0 -mt-1">
-                <div className="bg-gray-100/30 md:bg-gray-100/10 h-[0.3px] w-full"></div>
+            <div className="bg-black pt-8 md:pt-0 -mt-1 md:mt-0">
+                <div className="w-full bg-gray-500/20 h-[2px] md:h-[1.5px]"></div>
                 <div className="flex py-8 justify-center items-center text-gray-600 flex-col md:flex-row">
                     <div>
                         Prithvi Resorts & Hotels © {new Date().getFullYear()}

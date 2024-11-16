@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
                     </div>
                     <div className="px-2 hidden md:block">|</div>
                     <div className="text-gray-500/70 md:text-gray-600">
-                        Developed by <a href="https://arjunbasandrai.dev/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-all duration-300 text-gray-500">Arjun Basandrai</a>
+                        Developed by <a href="https://arjunbasandrai.dev/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-all duration-300 text-gray-400/80">Arjun Basandrai</a>
                     </div>
                 </div>
             </div>

@@ -3,63 +3,152 @@
 import "@/app/styles/globals.css";
 import { useState, useRef, useEffect } from "react";
 
+function TestimonialCard({ testimonial }: { testimonial: [string, string] }) {
+    return (
+        <div className="flex-1 bg-white max-w-80 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 h-full pt-8">
+            <p className="text-gray-500 px-4 md:px-8 py-6 md:pt-16 md:pb-10 text-md md:text-xl text-left h-full flex items-center">
+                {testimonial[0]}
+            </p>
+            <p className="text-black/90 text-md md:text-xl px-8 py-10 text-center">
+                {testimonial[1]}
+            </p>
+        </div>
+    );
+}
+
 export default function Testimonials() {
     const testimonials: [string, string][] = [
-        ["It's like an Oasis in the Area. Huge Lawn and a Vast Party Hall provide good opportunity for conducting functions like marriage / reception party etc. We attended a marriage of a relative here and found the place spacious enough for accommodating more than 500 people.", "Sukhvinder"],
-        ["The property looks like a Huge Majestic Royal Palace. The rooms are very spacious and the toilets are very clean and hygienic.", "Kamal Sharma"],
-        ["Quite spacious and Elegant. Have a nice big outdoor area as well. Easy to find. Visible from highway. Parking available.", "Tamanpreet Singh"],
+        [
+            "The property looks like a Huge Majestic Royal Palace. The rooms are very spacious and the toilets are very clean and hygienic.",
+            "Kamal Sharma",
+        ],
+        [
+            "It's like an Oasis in the Area. Huge Lawn and a Vast Party Hall provide good opportunity for conducting functions like marriage / reception party etc. We attended a marriage of a relative here and found the place spacious enough for accommodating more than 500 people.",
+            "Sukhvinder",
+        ],
+        [
+            "Quite spacious and Elegant. Have a nice big outdoor area as well. Easy to find. Visible from highway. Parking available.",
+            "Tamanpreet Singh",
+        ],
     ];
 
-    const [currentTestimonial, setCurrentTestimonial] = useState(0);
-    const [fade, setFade] = useState(true);
-
-    const blockquoteRef = useRef<HTMLQuoteElement>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
     const containerRef = useRef<HTMLDivElement>(null);
-
-    const changeTestimonial = (newIndex: number) => {
-        setFade(false);
-        setTimeout(() => {
-            setCurrentTestimonial(newIndex);
-            setFade(true);
-        }, 400);
-    };
+    const cardRefs = useRef<HTMLDivElement[]>([]);
+    const isInitialRender = useRef(true);
 
     useEffect(() => {
-        if (blockquoteRef.current && containerRef.current) {
-            containerRef.current.style.height = `${blockquoteRef.current.scrollHeight + 48}px`;
+        const container = containerRef.current;
+        if (!container) return;
+
+        let debounceTimeout: NodeJS.Timeout;
+
+        const handleScroll = () => {
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(() => {
+                const scrollLeft = container.scrollLeft;
+                const containerCenter = scrollLeft + container.offsetWidth / 2;
+
+                const closestIndex = cardRefs.current.reduce((closest, card, index) => {
+                    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                    return Math.abs(cardCenter - containerCenter) <
+                        Math.abs(
+                            cardRefs.current[closest].offsetLeft +
+                                cardRefs.current[closest].offsetWidth / 2 -
+                                containerCenter
+                        )
+                        ? index
+                        : closest;
+                }, 0);
+
+                if (closestIndex !== activeIndex) {
+                    setActiveIndex(closestIndex);
+                }
+            }, 100);
+        };
+
+        container.addEventListener("scroll", handleScroll);
+
+        return () => {
+            container.removeEventListener("scroll", handleScroll);
+            clearTimeout(debounceTimeout);
+        };
+    }, [activeIndex]);
+
+    useEffect(() => {
+        if (isInitialRender.current) {
+            isInitialRender.current = false;
+            return;
         }
-    }, [currentTestimonial]);
+
+        scrollToCard(activeIndex);
+    }, []);
+
+    const scrollToCard = (index: number) => {
+        if (cardRefs.current[index] && containerRef.current) {
+            const card = cardRefs.current[index];
+            const container = containerRef.current;
+
+            const containerWidth = container.offsetWidth;
+            const cardWidth = card.offsetWidth;
+            const cardOffsetLeft = card.offsetLeft;
+
+            const scrollLeft = cardOffsetLeft - (containerWidth - cardWidth) / 2;
+
+            container.scrollTo({
+                left: scrollLeft,
+                behavior: "smooth",
+            });
+
+            setActiveIndex(index);
+        }
+    };
 
     return (
         <>
-            <div className="w-full bg-primary px-4 pt-16 pb-20 md:py-32 flex flex-col items-center text-black relative">
-                <h1 className="text-2xl md:text-3xl uppercase mb-6 md:mb-12 text-center">What our guests are saying</h1>
+            <section className="w-full text-center py-24 md:px-12 bg-primary overflow-hidden">
+                <h1 className="text-5xl uppercase mx-14 md:mx-0">What our clients are saying</h1>
                 <div
                     ref={containerRef}
-                    className="w-full flex flex-col items-center justify-center transition-all duration-300 overflow-hidden"
+                    className="flex mt-16 md:gap-8 gap-2 justify-start md:justify-center overflow-x-auto snap-x snap-mandatory md:overflow-visible w-full"
                 >
-                    <div className={`relative w-full flex flex-col items-center md:py-1 text-center transition-opacity duration-500 ${fade ? 'opacity-100' : 'opacity-0'}`}>
-                        <blockquote
-                            ref={blockquoteRef}
-                            className="max-w-[700px] text-lg md:text-2xl text-white"
-                        >
-                            {testimonials[currentTestimonial][0]}
-                        </blockquote>
-                        <p className="max-w-[700px] text-md md:text-lg mt-5 text-white">
-                            - {testimonials[currentTestimonial][1]}
-                        </p>
-                    </div>
-                    <div className="flex absolute bottom-[2rem] md:bottom-[4rem] gap-2">
-                    {testimonials.map((_, index) => (
+                    {testimonials.map((testimonial, index) => (
+                        <div key={index} className="hidden md:block">
+                            <TestimonialCard testimonial={testimonial} />
+                        </div>
+                    ))}
+                    {testimonials.map((testimonial, index) => (
                         <div
-                        key={index}
-                        onClick={() => changeTestimonial(index)}
-                        className={`h-2 rounded-full cursor-pointer mt-4 ${index === currentTestimonial ? 'bg-black w-6' : 'bg-black/40 w-2'} trasition-all duration-300`}
+                            key={index}
+                            ref={(el) => {
+                                if (el) {
+                                    cardRefs.current[index] = el;
+                                }
+                            }}
+                            className={`flex-shrink-0 md:hidden ${
+                                index === 0
+                                    ? "pl-2"
+                                    : index === testimonials.length - 1
+                                    ? "pr-2"
+                                    : ""
+                            } snap-center md:flex-1 w-[80%] md:w-auto`}
+                        >
+                            <TestimonialCard testimonial={testimonial} />
+                        </div>
+                    ))}
+                </div>
+                <div className="flex justify-center mt-8 md:hidden">
+                    {testimonials.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => scrollToCard(index)}
+                            className={`h-2 w-2 rounded-full mx-1 ${
+                                activeIndex === index ? "bg-gray-800" : "bg-gray-400"
+                            }`}
                         />
                     ))}
-                    </div>
                 </div>
-            </div>
+            </section>
         </>
     );
 }

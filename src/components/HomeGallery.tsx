@@ -78,7 +78,7 @@ export default function Gallery() {
               className={`h-screen relative flex-shrink-0 top-0 ${isSticky[0] ? 'bg-opacity-20' : ''}`}
               style={{
                 width: isMobile ? "100%" : imageWidth,
-                scale: isMobile ? "98%" : imageScale,
+                scale: isMobile ? "95%" : imageScale,
                 borderRadius: isMobile ? '24px' : imageBorderRadius,
                 overflow: 'hidden',
               }}
@@ -111,7 +111,7 @@ export default function Gallery() {
           </div>
         </div>
 
-        <div className="w-full h-screen"></div>
+        <div className="hidden md:block w-full h-screen"></div>
         {[
           { src: '/stage.jpg', caption: 'Wedding Ceremonies', offset: '9rem' },
           { src: '/hall.jpg', caption: 'Kitty Parties', offset: '12rem' },
@@ -130,7 +130,7 @@ export default function Gallery() {
                 fill
                 className="object-cover w-full h-full rounded-[24px]"
               />
-              <div className="md:hidden h-full w-full bg-gradient-to-t from-black/95 via-black/70 to-black/0 transition-all duration-[500ms] absolute z-[10] md:scale-[98%]"></div>
+              <div className="md:hidden h-full w-full bg-gradient-to-t from-black/95 via-black/70 to-black/0 transition-all duration-[500ms] absolute z-[10] md:scale-[95%]"></div>
             </div>
             <div className="absolute md:static w-full basis-1/3 flex flex-col md:flex-row justify-center text-center h-screen py-48">
               <Link href="/about" style={{

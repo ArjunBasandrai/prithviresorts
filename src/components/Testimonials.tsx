@@ -110,7 +110,7 @@ export default function Testimonials() {
                 <h1 className="text-4xl md:text-5xl uppercase mx-14 md:mx-0">What our clients are saying</h1>
                 <div
                     ref={containerRef}
-                    className="flex mt-16 md:gap-8 gap-2 justify-start md:justify-center overflow-x-auto snap-x snap-mandatory md:overflow-visible w-full"
+                    className="flex mt-16 md:gap-8 gap-2 justify-start md:justify-center overflow-x-auto snap-x snap-mandatory md:overflow-visible w-full hide-scrollbar"
                 >
                     {testimonials.map((testimonial, index) => (
                         <div key={index} className="hidden md:block">

@@ -10,7 +10,7 @@ function TestimonialCard({ testimonial }: { testimonial: [string, string] }) {
                 {testimonial[0]}
             </p>
             <p className="text-black/90 text-md md:text-xl px-8 py-10 text-center">
-                {testimonial[1]}
+                - {testimonial[1]}
             </p>
         </div>
     );
@@ -23,8 +23,8 @@ export default function Testimonials() {
             "Kamal Sharma",
         ],
         [
-            "It's like an Oasis in the Area. Huge Lawn and a Vast Party Hall provide good opportunity for conducting functions like marriage / reception party etc. We attended a marriage of a relative here and found the place spacious enough for accommodating more than 500 people.",
-            "Sukhvinder",
+            "Spacious and very beautiful. Has AC, which is always a bonus. Inside and out was decorated well. We used this for my sisters wedding. Easy access from NH44 which is always good aswell.",
+            "A V",
         ],
         [
             "Quite spacious and Elegant. Have a nice big outdoor area as well. Easy to find. Visible from highway. Parking available.",

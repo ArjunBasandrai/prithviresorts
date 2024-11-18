@@ -107,7 +107,7 @@ export default function Testimonials() {
     return (
         <>
             <section className="w-full text-center py-24 md:px-12 bg-primary overflow-hidden">
-                <h1 className="text-5xl uppercase mx-14 md:mx-0">What our clients are saying</h1>
+                <h1 className="text-4xl md:text-5xl uppercase mx-14 md:mx-0">What our clients are saying</h1>
                 <div
                     ref={containerRef}
                     className="flex mt-16 md:gap-8 gap-2 justify-start md:justify-center overflow-x-auto snap-x snap-mandatory md:overflow-visible w-full"

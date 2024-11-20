@@ -19,12 +19,12 @@ function TestimonialCard({ testimonial }: { testimonial: [string, string] }) {
 export default function Testimonials() {
     const testimonials: [string, string][] = [
         [
-            "The property looks like a Huge Majestic Royal Palace. The rooms are very spacious and the toilets are very clean and hygienic.",
-            "Kamal Sharma",
+            "Spacious and very beautiful. Has AC, which is always a bonus. Inside and out was decorated well. We used this for my sisters wedding. Easy access from NH44 which is always good aswell.",
+            "Arshdeep Singh",
         ],
         [
-            "Spacious and very beautiful. Has AC, which is always a bonus. Inside and out was decorated well. We used this for my sisters wedding. Easy access from NH44 which is always good aswell.",
-            "A V",
+            "The property looks like a Huge Majestic Royal Palace. The rooms are very spacious and the toilets are very clean and hygienic.",
+            "Kamal Sharma",
         ],
         [
             "Quite spacious and Elegant. Have a nice big outdoor area as well. Easy to find. Visible from highway. Parking available.",

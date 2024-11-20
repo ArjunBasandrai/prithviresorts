@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import "../app/styles/globals.css";
+import "@/app/styles/globals.css";
 
 type Section = "about" | "wedding-palace" | "conference-hall" | "hotel";
 

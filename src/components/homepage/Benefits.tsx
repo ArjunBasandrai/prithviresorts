@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import "../app/styles/globals.css";
+import "@/app/styles/globals.css";
 
 import { useDispatch } from 'react-redux';
 import { setGalleryTop } from '@/store/store';

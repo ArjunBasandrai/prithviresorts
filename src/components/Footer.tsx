@@ -49,8 +49,9 @@ const Footer: React.FC = () => {
                         <DiamondIcon />
                         <h6 className="font-bold text-xl mt-2">Here&apos;s where to find us</h6>
                         <div className="mt-5 mb-4 md:mb-12 text-gray-300">
+                            <p>Prithvi Resorts & Hotels</p>
                             <p>Grand Trunk Road, Village Bhattian</p>
-                            <p>Phillaur, Dist. Jalandhar</p>
+                            <p>Phillaur, Dist. Jalandhar (144410)</p>
                             <p>Punjab, India</p>
                         </div>
                         <div className="flex space-x-2 md:mt-4">

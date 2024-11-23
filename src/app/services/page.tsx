@@ -93,7 +93,7 @@ export default function Services() {
   return (
     <div className="w-full h-screen relative overflow-hidden">
       <div
-        className={`flex h-full relative bg-white ${isDraggingState ? 'cursor-grabbing' : 'cursor-grab'}`}
+        className={`flex h-full relative ${isDraggingState ? 'cursor-grabbing bg-white' : 'cursor-grab bg-black'}`}
         ref={slidesRef}
         onMouseDown={handleDragStart}
         onMouseMove={handleDragMove}
@@ -196,9 +196,12 @@ export default function Services() {
           <div className="w-full h-full pt-4 pl-20 flex border-l-[0.5px] border-white/10">
             {services.map((service, index) => {
               return (
-                <div key={index} className={`flex-1 h-full p-5 ${index === currentIndex ? 'text-white' : 'text-white/70'
-                  } ${index === currentIndex ? 'border-b-2 border-white' : ''
-                  }`}>
+                <div
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`flex-1 h-full p-5 cursor-pointer ${index === currentIndex ? 'text-white' : 'text-white/70'
+                    } ${index === currentIndex ? 'border-b-2 border-white' : ''
+                    }`}>
                   <p className="text-md mb-4">
                     0{index + 1}
                   </p>
@@ -211,10 +214,11 @@ export default function Services() {
           </div>
         </div>
       </div>
+
       <style jsx>{`
         .overlay {
           background-color: rgba(0, 0, 0, 0.75);
-          transition: background-color 1s ease-out;
+          transition: background-color 0.8s ease-out;
         }
         .overlay-dragging {
           background-color: transparent;

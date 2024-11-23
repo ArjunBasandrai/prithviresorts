@@ -93,7 +93,7 @@ export default function Services() {
   return (
     <div className="w-full h-screen relative overflow-hidden">
       <div
-        className={`flex h-full relative bg-primary ${isDraggingState ? 'cursor-grabbing' : 'cursor-grab'}`}
+        className={`flex h-full relative bg-white ${isDraggingState ? 'cursor-grabbing' : 'cursor-grab'}`}
         ref={slidesRef}
         onMouseDown={handleDragStart}
         onMouseMove={handleDragMove}
@@ -143,7 +143,7 @@ export default function Services() {
                 src={service.image}
                 alt={service.title}
                 fill
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover transition-all duration-100 ${isDraggingState ? 'opacity-0' : 'opacity-100'}`}
                 draggable={false}
               />
               <div
@@ -152,7 +152,7 @@ export default function Services() {
               >
                 <div className="flex w-full h-[85%] unselectable">
                   <div className="w-[15%] p-4 flex justify-center items-center">
-                    <p className="text-white flex">
+                    <p className={`text-white flex transition-all duration-100 ${isDraggingState ? 'opacity-0' : 'opacity-100'}`}>
                       <span className="text-xl">{`0${index + 1}/`}</span>
                       <span className="text-5xl -mt-3">{`0${services.length}`}</span>
                     </p>
@@ -217,7 +217,7 @@ export default function Services() {
           transition: background-color 1s ease-out;
         }
         .overlay-dragging {
-          background-color: #ffffff;
+          background-color: transparent;
           transition: background-color 0.1s ease-out;
         }
         .title {

@@ -26,10 +26,12 @@ export default function Services() {
   const slidesRef = useRef<HTMLDivElement>(null);
   const slideWidth = useRef<number>(0);
   const [isSlideWidthReady, setIsSlideWidthReady] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false); // Added state variable
 
   useEffect(() => {
     const updateSlideWidth = () => {
       slideWidth.current = window.innerWidth;
+      setIsMobile(window.innerWidth <= 768); // Set breakpoint for mobile devices
     };
 
     updateSlideWidth();
@@ -111,7 +113,9 @@ export default function Services() {
           const absDistance = Math.abs(distanceFromCurrent);
           const translationAmount = absDistance * 550;
           let additionalTranslateX = 0;
-          if (isDraggingState) {
+
+          // Conditionally apply additional translation on non-mobile devices
+          if (!isMobile && isDraggingState) {
             if (distanceFromCurrent > 0) {
               additionalTranslateX = -translationAmount;
             } else if (distanceFromCurrent < 0) {
@@ -151,13 +155,13 @@ export default function Services() {
                   }`}
               >
                 <div className="flex w-full h-[85%] unselectable">
-                  <div className="w-[15%] p-4 flex justify-center items-center">
+                  <div className="hidden md:flex md:w-[15%] p-4 justify-center items-center">
                     <p className={`text-white flex transition-all duration-100 ${isDraggingState ? 'opacity-0' : 'opacity-100'}`}>
                       <span className="text-xl">{`0${index + 1}/`}</span>
                       <span className="text-5xl -mt-3">{`0${services.length}`}</span>
                     </p>
                   </div>
-                  <div className="w-[85%] p-20 flex items-center">
+                  <div className="w-full md:w-[85%] text-center md:text-left justify-center md:justify-start p-10 md:p-20 flex items-center">
                     <div>
                       <p className="text-xl text-black mb-16 flex items-center">
                         <span
@@ -170,17 +174,19 @@ export default function Services() {
                         >{`0${index + 1}`}</span>
                       </p>
                       <h2
-                        className={`text-7xl title ${isDraggingState ? 'title-dragging' : ''
+                        className={`text-5xl md:text-7xl title ${isDraggingState ? 'title-dragging' : ''
                           }`}
                       >
                         {service.title}
                       </h2>
+                      <div className="group">
                       <Link
                         href="/"
-                        className="block text-lg ml-2 mt-6 text-white hover:text-xl hover:text-primary transition-all duration-300"
-                      >
+                        className="block text-lg ml-2 mt-6 text-white group-hover:md:text-xl hover:text-primary transition-all duration-300"
+                        >
                         Learn More
                       </Link>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -191,15 +197,15 @@ export default function Services() {
 
       </div>
       <div className="absolute bottom-0 flex w-full h-[20%] z-2">
-        <div className="w-[45%]"></div>
-        <div className="w-[55%]">
-          <div className="w-full h-full pt-4 pl-20 flex border-l-[0.5px] border-white/10">
+        <div className="hidden md:block md:w-[45%]"></div>
+        <div className="w-full md:w-[55%]">
+          <div className="w-full h-full pt-4 md:pl-20 flex md:border-l-[0.5px] md:border-white/10">
             {services.map((service, index) => {
               return (
                 <div
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`flex-1 h-full p-5 cursor-pointer ${index === currentIndex ? 'text-white' : 'text-white/70'
+                  className={`flex-1 h-full px-5 flex flex-col justify-center md:justify-start md:p-5 cursor-pointer ${index === currentIndex ? 'text-white' : 'text-white/70'
                     } ${index === currentIndex ? 'border-b-2 border-white' : ''
                     }`}>
                   <p className="text-md mb-4">

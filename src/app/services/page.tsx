@@ -28,6 +28,8 @@ export default function Services() {
   const [isSlideWidthReady, setIsSlideWidthReady] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false); // Added state variable
 
+  const desiredGap = 550; 
+
   useEffect(() => {
     const updateSlideWidth = () => {
       slideWidth.current = window.innerWidth;
@@ -109,23 +111,16 @@ export default function Services() {
 
         {services.map((service, index) => {
           const baseTranslateX = (index - currentIndex) * slideWidth.current;
-          const distanceFromCurrent = index - currentIndex;
-          const absDistance = Math.abs(distanceFromCurrent);
-          const translationAmount = absDistance * 550;
-          let additionalTranslateX = 0;
 
-          // Conditionally apply additional translation on non-mobile devices
-          if (!isMobile && isDraggingState) {
-            if (distanceFromCurrent > 0) {
-              additionalTranslateX = -translationAmount;
-            } else if (distanceFromCurrent < 0) {
-              additionalTranslateX = translationAmount;
-            } else {
-              additionalTranslateX = 0;
-            }
+          let totalTranslateX = 0;
+
+          if (isDraggingState && !isMobile) {
+            // During dragging, adjust translation to achieve desired gap between titles
+            totalTranslateX = dragOffset + (index - currentIndex) * desiredGap;
+          } else {
+            // When not dragging, position slides normally
+            totalTranslateX = baseTranslateX + dragOffset;
           }
-
-          const totalTranslateX = baseTranslateX + dragOffset + additionalTranslateX;
 
           const slideStyle: React.CSSProperties = {
             transform: `translateX(${totalTranslateX}px)`,
@@ -196,7 +191,7 @@ export default function Services() {
         })}
 
       </div>
-      <div className="absolute bottom-0 flex w-full h-[15%] z-2">
+      <div className="absolute bottom-0 flex w-full h-[15%] md:h-[20%] z-2">
         <div className="hidden md:block md:w-[45%]"></div>
         <div className="w-full md:w-[55%]">
           <div className="w-full h-full pt-4 md:pl-20 flex md:border-l-[0.5px] md:border-white/10">

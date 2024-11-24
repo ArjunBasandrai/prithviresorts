@@ -90,12 +90,12 @@ export default function Services() {
     }
   };
 
-  const transitionDuration = isDraggingState ? '0.3s' : '0.1s';
+  const transitionDuration = isDraggingState ? '0.3s' : '0.5s';
 
   return (
     <div className="w-full h-screen relative overflow-hidden">
       <div
-        className={`flex h-full relative ${isDraggingState ? 'cursor-grabbing bg-white' : 'cursor-grab bg-black'}`}
+        className={`flex h-full relative bg-white ${isDraggingState ? 'cursor-grabbing' : 'cursor-grab'}`}
         ref={slidesRef}
         onMouseDown={handleDragStart}
         onMouseMove={handleDragMove}
@@ -147,7 +147,7 @@ export default function Services() {
                 src={service.image}
                 alt={service.title}
                 fill
-                className={`w-full h-full object-cover transition-all duration-100 ${isDraggingState ? 'opacity-0' : 'opacity-100'}`}
+                className={`w-full h-full object-cover transition-all duration-100 ${isDraggingState ? 'opacity-0 delay-0' : 'opacity-100 delay-[500ms] '}`}
                 draggable={false}
               />
               <div
@@ -196,7 +196,7 @@ export default function Services() {
         })}
 
       </div>
-      <div className="absolute bottom-0 flex w-full h-[20%] z-2">
+      <div className="absolute bottom-0 flex w-full h-[15%] z-2">
         <div className="hidden md:block md:w-[45%]"></div>
         <div className="w-full md:w-[55%]">
           <div className="w-full h-full pt-4 md:pl-20 flex md:border-l-[0.5px] md:border-white/10">
@@ -205,7 +205,7 @@ export default function Services() {
                 <div
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`flex-1 h-full px-5 flex flex-col justify-center md:justify-start md:p-5 cursor-pointer ${index === currentIndex ? 'text-white' : 'text-white/70'
+                  className={`flex-1 h-full px-5 flex flex-col justify-start md:p-5 cursor-pointer ${index === currentIndex ? 'text-white' : 'text-white/70'
                     } ${index === currentIndex ? 'border-b-2 border-white' : ''
                     }`}>
                   <p className="text-md mb-4">
@@ -224,7 +224,8 @@ export default function Services() {
       <style jsx>{`
         .overlay {
           background-color: rgba(0, 0, 0, 0.75);
-          transition: background-color 0.8s ease-out;
+          transition: background-color 0.2s ease-out;
+          transition-delay: 400ms;
         }
         .overlay-dragging {
           background-color: transparent;
@@ -233,9 +234,11 @@ export default function Services() {
         .title {
           color: #ffffff;
           transition: color 0.3s ease-out;
-        }
-        .title-dragging {
-          color: #000000;
+          transition-delay: 300ms;
+          }
+          .title-dragging {
+            color: #000000;
+            transition-delay: 0ms;
         }
         .unselectable {
           user-select: none;
